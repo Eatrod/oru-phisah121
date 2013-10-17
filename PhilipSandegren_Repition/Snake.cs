@@ -15,7 +15,7 @@ namespace PhilipSandegren_Repition
         public void restart()
         {
             score = 0;
-            ShowDialog("Spelet är slut");
+            MessageBox.Show("Spelet är slut");
         }
         public void collision()
         {
@@ -59,7 +59,7 @@ namespace PhilipSandegren_Repition
 
         private void GameTick_Tick(object sender, EventArgs e)
         {
-            snakeScore_LBL.Text = Convert.ToString(score);
+            snakeScore_LBL.Text = "Score: " + Convert.ToString(score);
             if (down == true) 
             { 
                 snakes.moveDown(); 
