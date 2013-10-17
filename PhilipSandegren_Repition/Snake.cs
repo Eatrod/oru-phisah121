@@ -26,12 +26,12 @@ namespace PhilipSandegren_Repition
                     restart();
                 }
             }
-            if (snakes.SnakeRec[0].X < 0 || snakes.SnakeRec[0].X > 290)
+            if (snakes.SnakeRec[0].X < 0 || snakes.SnakeRec[0].X >= 495)
             {
                 restart();
 
             }
-            if (snakes.SnakeRec[0].Y < 0 || snakes.SnakeRec[0].Y > 290)
+            if (snakes.SnakeRec[0].Y < 0 || snakes.SnakeRec[0].Y >= 470)
             {
                 restart();
             }

@@ -36,6 +36,7 @@
             // snakeScore_LBL
             // 
             this.snakeScore_LBL.AutoSize = true;
+            this.snakeScore_LBL.BackColor = System.Drawing.Color.Transparent;
             this.snakeScore_LBL.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.snakeScore_LBL.Location = new System.Drawing.Point(13, 409);
             this.snakeScore_LBL.Name = "snakeScore_LBL";
@@ -54,7 +55,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
-            this.ClientSize = new System.Drawing.Size(479, 434);
+            this.ClientSize = new System.Drawing.Size(479, 432);
             this.Controls.Add(this.snakeScore_LBL);
             this.DoubleBuffered = true;
             this.Name = "Snake";
