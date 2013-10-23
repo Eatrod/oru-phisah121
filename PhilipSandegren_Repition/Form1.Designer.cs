@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Spel));
             this.Game_T = new System.Windows.Forms.Timer(this.components);
             this.Timer_LBL = new System.Windows.Forms.Label();
             this.Score_LBL = new System.Windows.Forms.Label();
-            this.Mainpicture_PB = new System.Windows.Forms.PictureBox();
             this.Exit_BL = new System.Windows.Forms.Button();
             this.Options_BL = new System.Windows.Forms.Button();
             this.Newgame_BL = new System.Windows.Forms.Button();
             this.Snake_BL = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.Mainpicture_PB)).BeginInit();
+            this.tictactoe_BL = new System.Windows.Forms.Button();
+            this.title_LBL = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Game_T
@@ -48,39 +47,27 @@
             // Timer_LBL
             // 
             this.Timer_LBL.AutoSize = true;
-            this.Timer_LBL.Font = new System.Drawing.Font("Moire ExtraBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Timer_LBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Timer_LBL.Location = new System.Drawing.Point(12, 539);
             this.Timer_LBL.Name = "Timer_LBL";
-            this.Timer_LBL.Size = new System.Drawing.Size(0, 14);
+            this.Timer_LBL.Size = new System.Drawing.Size(0, 13);
             this.Timer_LBL.TabIndex = 5;
             this.Timer_LBL.Visible = false;
             // 
             // Score_LBL
             // 
             this.Score_LBL.AutoSize = true;
-            this.Score_LBL.Font = new System.Drawing.Font("Moire ExtraBold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.Score_LBL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.Score_LBL.Location = new System.Drawing.Point(80, 540);
             this.Score_LBL.Name = "Score_LBL";
-            this.Score_LBL.Size = new System.Drawing.Size(59, 14);
+            this.Score_LBL.Size = new System.Drawing.Size(55, 13);
             this.Score_LBL.TabIndex = 6;
             this.Score_LBL.Text = "Score: 0";
             this.Score_LBL.Visible = false;
             // 
-            // Mainpicture_PB
-            // 
-            this.Mainpicture_PB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Mainpicture_PB.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.Mainpicture_PB.Image = global::PhilipSandegren_Repition.Properties.Resources.Ultrashooter_text;
-            this.Mainpicture_PB.InitialImage = global::PhilipSandegren_Repition.Properties.Resources.Ultrashooter_text;
-            this.Mainpicture_PB.Location = new System.Drawing.Point(120, 24);
-            this.Mainpicture_PB.Name = "Mainpicture_PB";
-            this.Mainpicture_PB.Size = new System.Drawing.Size(618, 109);
-            this.Mainpicture_PB.TabIndex = 4;
-            this.Mainpicture_PB.TabStop = false;
-            // 
             // Exit_BL
             // 
-            this.Exit_BL.Font = new System.Drawing.Font("Miramonte", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Exit_BL.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Exit_BL.Image = global::PhilipSandegren_Repition.Properties.Resources.button;
             this.Exit_BL.Location = new System.Drawing.Point(301, 391);
             this.Exit_BL.Name = "Exit_BL";
@@ -105,7 +92,7 @@
             // 
             this.Newgame_BL.BackColor = System.Drawing.Color.Gainsboro;
             this.Newgame_BL.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Newgame_BL.Font = new System.Drawing.Font("Miramonte", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Newgame_BL.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Newgame_BL.Image = global::PhilipSandegren_Repition.Properties.Resources.button;
             this.Newgame_BL.Location = new System.Drawing.Point(301, 169);
             this.Newgame_BL.Name = "Newgame_BL";
@@ -129,6 +116,30 @@
             this.Snake_BL.Visible = false;
             this.Snake_BL.Click += new System.EventHandler(this.Snake_BL_Click);
             // 
+            // tictactoe_BL
+            // 
+            this.tictactoe_BL.Enabled = false;
+            this.tictactoe_BL.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tictactoe_BL.Image = global::PhilipSandegren_Repition.Properties.Resources.button;
+            this.tictactoe_BL.Location = new System.Drawing.Point(52, 268);
+            this.tictactoe_BL.Name = "tictactoe_BL";
+            this.tictactoe_BL.Size = new System.Drawing.Size(190, 50);
+            this.tictactoe_BL.TabIndex = 8;
+            this.tictactoe_BL.Text = "TicTacToe";
+            this.tictactoe_BL.UseVisualStyleBackColor = true;
+            this.tictactoe_BL.Visible = false;
+            this.tictactoe_BL.Click += new System.EventHandler(this.tictactoe_BL_Click);
+            // 
+            // title_LBL
+            // 
+            this.title_LBL.AutoSize = true;
+            this.title_LBL.Font = new System.Drawing.Font("MS Reference Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title_LBL.Location = new System.Drawing.Point(179, 55);
+            this.title_LBL.Name = "title_LBL";
+            this.title_LBL.Size = new System.Drawing.Size(424, 60);
+            this.title_LBL.TabIndex = 9;
+            this.title_LBL.Text = "Game collection";
+            // 
             // Spel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -136,10 +147,11 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(844, 562);
+            this.Controls.Add(this.title_LBL);
+            this.Controls.Add(this.tictactoe_BL);
             this.Controls.Add(this.Snake_BL);
             this.Controls.Add(this.Score_LBL);
             this.Controls.Add(this.Timer_LBL);
-            this.Controls.Add(this.Mainpicture_PB);
             this.Controls.Add(this.Exit_BL);
             this.Controls.Add(this.Options_BL);
             this.Controls.Add(this.Newgame_BL);
@@ -149,9 +161,8 @@
             this.MinimumSize = new System.Drawing.Size(860, 600);
             this.Name = "Spel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UltraShooter";
+            this.Text = "Game Collection";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Spel_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.Mainpicture_PB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,9 +176,9 @@
         public System.Windows.Forms.Timer Game_T;
         public System.Windows.Forms.Label Timer_LBL;
         public System.Windows.Forms.Label Score_LBL;
-        private System.Windows.Forms.PictureBox Mainpicture_PB;
         private System.Windows.Forms.Button Snake_BL;
-
+        private System.Windows.Forms.Button tictactoe_BL;
+        private System.Windows.Forms.Label title_LBL;
 
     }
 }
