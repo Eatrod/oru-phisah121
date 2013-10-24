@@ -1,0 +1,25 @@
+﻿Build started 2013-09-26 10:29:24.
+     1>Project "M:\OOP\PhilipSandegren\PhilipSandegren\PhilipSandegren.vcxproj" on node 5 (Build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Release\PhilipSandegren_Car.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+         Main.cpp
+     1>m:\oop\philipsandegren\philipsandegren\Car.h(16): error C2039: 'brand' : is not a member of 'std::basic_string<_Elem,_Traits,_Alloc>'
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>,
+                     _Alloc=std::allocator<char>
+                 ]
+     1>m:\oop\philipsandegren\philipsandegren\Car.h(17): error C2065: 'carname' : undeclared identifier
+     1>m:\oop\philipsandegren\philipsandegren\Car.h(17): error C2228: left of '.year' must have class/struct/union
+                 type is ''unknown-type''
+     1>m:\oop\philipsandegren\philipsandegren\Car.h(18): error C2065: 'carname' : undeclared identifier
+     1>m:\oop\philipsandegren\philipsandegren\Car.h(18): error C2228: left of '.price' must have class/struct/union
+                 type is ''unknown-type''
+     1>Done Building Project "M:\OOP\PhilipSandegren\PhilipSandegren\PhilipSandegren.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.47

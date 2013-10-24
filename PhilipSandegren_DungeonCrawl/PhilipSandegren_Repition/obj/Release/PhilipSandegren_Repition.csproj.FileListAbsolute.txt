@@ -1,0 +1,9 @@
+M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Repition\bin\Release\PhilipSandegren_Repition.exe.config
+M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Repition\bin\Release\PhilipSandegren_Repition.exe
+M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Repition\bin\Release\PhilipSandegren_Repition.pdb
+M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Repition\obj\Release\PhilipSandegren_Repition.csprojResolveAssemblyReference.cache
+M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Repition\obj\Release\PhilipSandegren_Repition.Spel.resources
+M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Repition\obj\Release\PhilipSandegren_Repition.Properties.Resources.resources
+M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Repition\obj\Release\PhilipSandegren_Repition.csproj.GenerateResource.Cache
+M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Repition\obj\Release\PhilipSandegren_Repition.exe
+M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Repition\obj\Release\PhilipSandegren_Repition.pdb
