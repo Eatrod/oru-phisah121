@@ -1,0 +1,17 @@
+﻿Build started 2013-09-30 10:40:35.
+     1>Project "M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Byggnad\PhilipSandegren_Byggnad.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\PhilipSandegren_Byggnad.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         PhilipSandegren_Byggnad.vcxproj -> M:\OOP\PhilipSandegren_DungeonCrawl\Release\PhilipSandegren_Byggnad.exe
+       FinalizeBuildStatus:
+         Deleting file "Release\PhilipSandegren_Byggnad.unsuccessfulbuild".
+         Touching "Release\PhilipSandegren_Byggnad.lastbuildstate".
+     1>Done Building Project "M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Byggnad\PhilipSandegren_Byggnad.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.09

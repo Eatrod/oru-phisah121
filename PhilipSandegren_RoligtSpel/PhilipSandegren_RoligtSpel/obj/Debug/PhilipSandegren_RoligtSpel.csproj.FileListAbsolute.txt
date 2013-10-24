@@ -1,0 +1,9 @@
+M:\OOP\PhilipSandegren_RoligtSpel\PhilipSandegren_RoligtSpel\bin\Debug\PhilipSandegren_RoligtSpel.exe.config
+M:\OOP\PhilipSandegren_RoligtSpel\PhilipSandegren_RoligtSpel\bin\Debug\PhilipSandegren_RoligtSpel.exe
+M:\OOP\PhilipSandegren_RoligtSpel\PhilipSandegren_RoligtSpel\bin\Debug\PhilipSandegren_RoligtSpel.pdb
+M:\OOP\PhilipSandegren_RoligtSpel\PhilipSandegren_RoligtSpel\obj\Debug\PhilipSandegren_RoligtSpel.csprojResolveAssemblyReference.cache
+M:\OOP\PhilipSandegren_RoligtSpel\PhilipSandegren_RoligtSpel\obj\Debug\PhilipSandegren_RoligtSpel.Form1.resources
+M:\OOP\PhilipSandegren_RoligtSpel\PhilipSandegren_RoligtSpel\obj\Debug\PhilipSandegren_RoligtSpel.Properties.Resources.resources
+M:\OOP\PhilipSandegren_RoligtSpel\PhilipSandegren_RoligtSpel\obj\Debug\PhilipSandegren_RoligtSpel.csproj.GenerateResource.Cache
+M:\OOP\PhilipSandegren_RoligtSpel\PhilipSandegren_RoligtSpel\obj\Debug\PhilipSandegren_RoligtSpel.exe
+M:\OOP\PhilipSandegren_RoligtSpel\PhilipSandegren_RoligtSpel\obj\Debug\PhilipSandegren_RoligtSpel.pdb

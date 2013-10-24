@@ -1,0 +1,17 @@
+﻿Build started 2013-09-26 10:29:24.
+     1>Project "M:\OOP\PhilipSandegren_FörstaKonsollProgram\PhilipSandegren_FörstaKonsollProgram\PhilipSandegren_FörstaKonsollProgram.vcxproj" on node 3 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\PhilipSandegren_FörstaKonsollProgram.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         PhilipSandegren_FörstaKonsollProgram.vcxproj -> M:\OOP\PhilipSandegren_DungeonCrawl\Release\PhilipSandegren_FörstaKonsollProgram.exe
+       FinalizeBuildStatus:
+         Deleting file "Release\PhilipSandegren_FörstaKonsollProgram.unsuccessfulbuild".
+         Touching "Release\PhilipSandegren_FörstaKonsollProgram.lastbuildstate".
+     1>Done Building Project "M:\OOP\PhilipSandegren_FörstaKonsollProgram\PhilipSandegren_FörstaKonsollProgram\PhilipSandegren_FörstaKonsollProgram.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.05

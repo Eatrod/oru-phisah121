@@ -1,0 +1,17 @@
+﻿Build started 2013-09-26 10:29:24.
+     1>Project "M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_ParameterTillMain\PhilipSandegren_ParameterTillMain.vcxproj" on node 2 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\PhilipSandegren_ParameterTillMain.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         PhilipSandegren_ParameterTillMain.vcxproj -> M:\OOP\PhilipSandegren_DungeonCrawl\Release\PhilipSandegren_ParameterTillMain.exe
+       FinalizeBuildStatus:
+         Deleting file "Release\PhilipSandegren_ParameterTillMain.unsuccessfulbuild".
+         Touching "Release\PhilipSandegren_ParameterTillMain.lastbuildstate".
+     1>Done Building Project "M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_ParameterTillMain\PhilipSandegren_ParameterTillMain.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.06

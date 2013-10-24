@@ -1,0 +1,19 @@
+﻿Build started 2013-10-07 11:23:42.
+     1>Project "M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Memory\PhilipSandegren_Memory.vcxproj" on node 4 (Rebuild target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\PhilipSandegren_Memory.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Memorygame.cpp Source.cpp
+         Source.cpp
+     1>m:\oop\philipsandegren_dungeoncrawl\philipsandegren_memory\source.cpp(4): error C2332: 'class' : missing tag name
+     1>m:\oop\philipsandegren_dungeoncrawl\philipsandegren_memory\source.cpp(4): warning C4094: untagged 'class' declared no symbols
+     1>m:\oop\philipsandegren_dungeoncrawl\philipsandegren_memory\source.cpp(4): error C2143: syntax error : missing ';' before 'using'
+         Memorygame.cpp
+     1>m:\oop\philipsandegren_dungeoncrawl\philipsandegren_memory\memorygame.cpp(4): error C2039: '{ctor}' : is not a member of 'Memorygame'
+                 m:\oop\philipsandegren_dungeoncrawl\philipsandegren_memory\memorygame.h(3) : see declaration of 'Memorygame'
+         Generating Code...
+     1>Done Building Project "M:\OOP\PhilipSandegren_DungeonCrawl\PhilipSandegren_Memory\PhilipSandegren_Memory.vcxproj" (Rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:06.31

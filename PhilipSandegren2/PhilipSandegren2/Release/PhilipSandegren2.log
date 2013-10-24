@@ -1,0 +1,17 @@
+﻿Build started 2013-09-26 10:29:24.
+     1>Project "M:\OOP\PhilipSandegren2\PhilipSandegren2\PhilipSandegren2.vcxproj" on node 4 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\PhilipSandegren_TärningsKast.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         PhilipSandegren2.vcxproj -> M:\OOP\PhilipSandegren_DungeonCrawl\Release\PhilipSandegren_TärningsKast.exe
+       FinalizeBuildStatus:
+         Deleting file "Release\PhilipSandegren_TärningsKast.unsuccessfulbuild".
+         Touching "Release\PhilipSandegren_TärningsKast.lastbuildstate".
+     1>Done Building Project "M:\OOP\PhilipSandegren2\PhilipSandegren2\PhilipSandegren2.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.10
