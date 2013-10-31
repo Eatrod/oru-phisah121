@@ -21,7 +21,7 @@ void main3_3() //Betyg 3 - Uppgift 3
 {
 	cout << "Main3.3" << endl;
 	Student s1;
-	istringstream iss("(Gösta,Göring,2000)");
+	istringstream iss("(Gösta ,Göring ,2000 )");
 	iss >> s1;
 	ostringstream oss;
 	oss << s1;
@@ -33,21 +33,28 @@ void main3_3() //Betyg 3 - Uppgift 3
 void main3_4() //Betyg 3 - Uppgift 4
 {
 	cout << "Main3_4" << endl;
-	Student s1("Gustav","Gustavsson",2000);
-	Student s2("Hugo", "Hugosson", 2001);
+	Student s1,s2;
+	istringstream iss("(Gustav ,Gustavsson ,2000 )");
+	iss >> s1;
+	istringstream iss2("Hugo ,Hugosson ,2001 )");
+	iss2 >> s2;
 	StudentRegister sr;
 	sr.Add(s1);
 	sr.Add(s2);
 	sr.setRegister("Extremt obegåvade begåvningar");
-	sr.List();
+	string lis = sr.List();
+	cout << lis;
 	system("pause");
 }
 
 void main3_5_6() //Betyg 3 - Uppgift 5 och 6
 {
 	cout << "Main3_5_6" << endl;
-	Student s1("Gustav","Gustavsson",2000);
-	Student s2("Hugo", "Hugosson", 2001);
+	Student s1,s2;
+	istringstream iss("(Gustav ,Gustavsson ,2000 )");
+	iss >> s1;
+	istringstream iss2("Hugo ,Hugosson ,2001 )");
+	iss2 >> s2;
 	StudentRegister sr;
 	sr.Add(s1);
 	sr.Add(s2);

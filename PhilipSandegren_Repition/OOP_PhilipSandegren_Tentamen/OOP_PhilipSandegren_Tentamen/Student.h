@@ -54,8 +54,9 @@ public:
 		in>>s.firstName;
 		std::getline(in,ss,',');
 		in>>s.lastName;
-		std::getline(in,ss,')');
+		std::getline(in,ss,',');
 		in>>s.enrollmentYear;
+		std::getline(in,ss,')');
 		return in;
 	}
 
