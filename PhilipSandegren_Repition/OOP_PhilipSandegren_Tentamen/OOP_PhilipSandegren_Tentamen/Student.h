@@ -18,11 +18,11 @@ public:
 	{
 	}
 	string getFirstName() {return firstName;}
-	void setFirstName(string firstName) {this->firstName;}
+	void setFirstName(string FirstName) {firstName = FirstName;}
 	string getLastName() {return lastName;}
-	void setLastName(string lastName) {this->lastName;}
+	void setLastName(string LastName) {lastName = LastName;}
 	int getEnrollmentYear() {return enrollmentYear;}
-	void setEnrollmentYear(int enrollmentYear) {this->enrollmentYear;}
+	void setEnrollmentYear(int enrollmentyear) {enrollmentYear = enrollmentyear;}
 
 	void Read()
 	{

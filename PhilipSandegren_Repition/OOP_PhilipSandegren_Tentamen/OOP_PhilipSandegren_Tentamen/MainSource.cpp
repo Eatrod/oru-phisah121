@@ -36,8 +36,9 @@ void main3_4() //Betyg 3 - Uppgift 4
 	Student s1,s2;
 	istringstream iss("(Gustav ,Gustavsson ,2000 )");
 	iss >> s1;
-	istringstream iss2("Hugo ,Hugosson ,2001 )");
-	iss2 >> s2;
+	s2.setFirstName("Hej");
+	s2.setLastName("Tja");
+	s2.setEnrollmentYear(5);
 	StudentRegister sr;
 	sr.Add(s1);
 	sr.Add(s2);
@@ -53,14 +54,16 @@ void main3_5_6() //Betyg 3 - Uppgift 5 och 6
 	Student s1,s2;
 	istringstream iss("(Gustav ,Gustavsson ,2000 )");
 	iss >> s1;
-	istringstream iss2("Hugo ,Hugosson ,2001 )");
-	iss2 >> s2;
+	s2.setFirstName("Hej");
+	s2.setLastName("Tja");
+	s2.setEnrollmentYear(5);
 	StudentRegister sr;
 	sr.Add(s1);
 	sr.Add(s2);
 	sr.setRegister("Extremt obegåvade begåvningar");
 	sr.write_2File("test.txt");
 	sr.readFromFile("test.txt");
+
 	system("pause");
 }
 
