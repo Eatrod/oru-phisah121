@@ -65,7 +65,6 @@ public:
 		try
 		{
 			fin.open(fileName);
-			v.clear();
 			while (std::getline(fin,strrow))
 			{
 				istringstream iss(strrow);
@@ -78,7 +77,7 @@ public:
 				{
 					Student s;
 					iss >> s;
-					if(s.getEnrollmentYear() != -1)
+					if(s.getFirstName() != " ")
 						v.push_back(s);
 				}
 				fin.close();
