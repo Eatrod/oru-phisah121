@@ -63,7 +63,7 @@ void main3_5_6() //Betyg 3 - Uppgift 5 och 6
 	sr.setRegister("Extremt obegåvade begåvningar");
 	sr.write_2File("test.txt");
 	sr.readFromFile("test.txt");
-
+	cout << sr << endl;
 	system("pause");
 }
 
