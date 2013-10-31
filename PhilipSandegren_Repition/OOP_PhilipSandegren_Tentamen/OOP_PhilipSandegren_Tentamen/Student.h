@@ -14,7 +14,7 @@ public:
 	Student(): firstName(" "), lastName(" "), enrollmentYear(0)
 	{
 	}
-	Student(string firstName, string lastName, int enrollmentYear)
+	Student(string firstName, string lastName, int enrollmentYear) : firstName(firstName),lastName(lastName),enrollmentYear(enrollmentYear)
 	{
 	}
 	string getFirstName() {return firstName;}
