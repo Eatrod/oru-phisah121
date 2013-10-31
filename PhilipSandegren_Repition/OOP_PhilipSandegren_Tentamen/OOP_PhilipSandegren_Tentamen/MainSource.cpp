@@ -51,7 +51,7 @@ void main3_4() //Betyg 3 - Uppgift 4
 void main3_5_6() //Betyg 3 - Uppgift 5 och 6
 {
 	cout << "Main3_5_6" << endl;
-	Student s1,s2;
+	Student s1,s2,s3;
 	istringstream iss("(Gustav ,Gustavsson ,2000 )");
 	iss >> s1;
 	s2.setFirstName("Hej");
