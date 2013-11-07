@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include "Vehicle.h"
+#include "VehicleRegister.h"
 
 using namespace std;
 
@@ -16,5 +17,8 @@ void main()
 	cout << v.getBrand() << endl;
 	v.setRepairDate("2013-05-11");
 	cout << v.getRepairDate() << endl;
+	VehicleRegister vr;
+	vr.Add(v);
+	vr.List();
 	system("PAUSE");
 }

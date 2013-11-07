@@ -34,10 +34,23 @@ public:
 		}
 		return oss.str();
 	}
+	
 	void setRegister(string Register)
 	{
 		this->Register = Register;
 	}
+	
+	friend ostream& operator<<(ostream& fout,VehicleRegister& vr)
+	{
+		fout << "Vehicleregister=" << vr.Register << endl;
+		for (auto &a : vr.v)
+		{
+			fout << "Register" << a << endl;
+		}
+		return fout;
+	}
+	
+	
 	void AddVehicle()
 	{
 		Vehicle f;
