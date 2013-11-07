@@ -14,11 +14,14 @@ void main()
 {
 	cout << "BETYG 4" << endl;
 	int check = 0;
+	Vehicle v;
+	VehicleRegister vr;
+	VehicleDataBase vd;
 	while (check != 7) {
 		cout << "1 = Nytt fordon" << endl;
 		cout << "2 = Tabort fordon" << endl;
 		cout << "3 = Lägg till reparation" << endl;
-		cout << "4 = Nytt register objekt" << endl;
+		cout << "4 = Nytt Dotterbolag" << endl;
 		cout << "5 = Aktivit register" << endl;
 		cout << "6 = Sök efter fordon" << endl;
 		cout << "7 = Avsluta" << endl;
@@ -30,29 +33,29 @@ void main()
 		}
 		if (check == 2)
 		{
-			Vehicle v;
+			v.deleteVehicle();
 		}
 		if (check == 3)
 		{
-			Vehicle v;
 			v.Service();
 		}
 		if (check == 4)
 		{
-			VehicleDataBase vd;
+			string namn;
+			VehicleRegister vr;
+			cout << "Skriv företagets namn" << endl;
+			cin >> namn;
+			vr.setCompanyName(namn);
 		}
 		if (check == 5)
 		{
 			string registerVal;
 			cout << "Skriv in namnet på registret du vill jobba med" << endl;
 			cin >> registerVal;
-			VehicleRegister vr;
 			vr.setRegister(registerVal);
 		}
 		if (check == 6)
 		{
-			Vehicle v;
-			VehicleDataBase vd;
 			vd.registerSearch("volvo","1984");
 		}
 		if (check == 7)
