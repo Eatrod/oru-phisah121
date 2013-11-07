@@ -54,5 +54,11 @@ public:
 		cout << "Type of service = " << endl;
 		cin >> whatFixed;
 	}
+
+	friend ostream& operator<<(ostream &o,const Vehicle&f)
+	{
+		o << "(" << f.brand << "," << f.year << "," << f.purchasingPrice << ")";
+		return o;
+	}
 };
 
