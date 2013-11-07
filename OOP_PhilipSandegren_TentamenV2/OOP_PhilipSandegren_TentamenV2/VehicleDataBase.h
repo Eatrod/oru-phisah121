@@ -37,5 +37,10 @@ public:
 	{
 		this->RegisterName = RegisterName;
 	}
+	
+	void registerSearch(string brand, string year)
+	{
+		
+	}
 };
 
