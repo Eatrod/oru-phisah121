@@ -25,7 +25,7 @@ void main()
 		cin >> check;
 		if (check == 1)
 		{
-			Vehicle v = new Vehicle();
+			Vehicle v;
 			v.Read();
 		}
 		if (check == 2)
@@ -60,5 +60,4 @@ void main()
 			break;
 		}
 	}
-	system("PAUSE");
 }
