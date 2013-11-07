@@ -55,6 +55,11 @@ public:
 		cin >> whatFixed;
 	}
 
+	void deleteVehicle()
+	{
+		delete(this);
+	}
+
 	friend ostream& operator<<(ostream &o,const Vehicle&f)
 	{
 		o << "(" << f.brand << "," << f.year << "," << f.purchasingPrice << ")";

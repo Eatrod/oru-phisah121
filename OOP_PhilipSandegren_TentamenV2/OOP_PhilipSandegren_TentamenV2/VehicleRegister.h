@@ -11,7 +11,7 @@ using namespace std;
 
 class VehicleRegister
 {
-private:
+protected:
 	string Register;
 	string companyName;
 	vector<Vehicle>v;
@@ -24,6 +24,10 @@ public:
 	{
 		v.push_back(f);
 	}
+
+	string getCompanyName() {return companyName;}
+	void setCompanyName(string CompanyName) {companyName = CompanyName;}
+
 	string List()
 	{
 		ostringstream oss;
