@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhilipSandegren_ProgrammeringsMetodik", "PhilipSandegren_ProgrammeringsMetodik\PhilipSandegren_ProgrammeringsMetodik.vcxproj", "{5AFA40FF-F8EC-4153-8F52-95EE0BB164E6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhilipSandegren_Fakultet", "PhilipSandegren_Fakultet\PhilipSandegren_Fakultet.vcxproj", "{985EC253-B4A4-4BD5-8C42-0BE5954E75A9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhilipSandegren_RekursivTriangel", "PhilipSandegren_RekursivTriangel\PhilipSandegren_RekursivTriangel.vcxproj", "{1A7E64D9-343C-4646-B522-B1F3D02A675E}"
+EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
@@ -13,6 +21,14 @@ Global
 		{5AFA40FF-F8EC-4153-8F52-95EE0BB164E6}.Debug|Win32.Build.0 = Debug|Win32
 		{5AFA40FF-F8EC-4153-8F52-95EE0BB164E6}.Release|Win32.ActiveCfg = Release|Win32
 		{5AFA40FF-F8EC-4153-8F52-95EE0BB164E6}.Release|Win32.Build.0 = Release|Win32
+		{985EC253-B4A4-4BD5-8C42-0BE5954E75A9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{985EC253-B4A4-4BD5-8C42-0BE5954E75A9}.Debug|Win32.Build.0 = Debug|Win32
+		{985EC253-B4A4-4BD5-8C42-0BE5954E75A9}.Release|Win32.ActiveCfg = Release|Win32
+		{985EC253-B4A4-4BD5-8C42-0BE5954E75A9}.Release|Win32.Build.0 = Release|Win32
+		{1A7E64D9-343C-4646-B522-B1F3D02A675E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1A7E64D9-343C-4646-B522-B1F3D02A675E}.Debug|Win32.Build.0 = Debug|Win32
+		{1A7E64D9-343C-4646-B522-B1F3D02A675E}.Release|Win32.ActiveCfg = Release|Win32
+		{1A7E64D9-343C-4646-B522-B1F3D02A675E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
