@@ -11,7 +11,7 @@ int RecStrLength(char str[])
 
 
 void main() {
-	char s[8] = "Hejsan";
+	char s[7] = "Hejsan";
 	cout << RecStrLength(s) << endl;
 	system("PAUSE");
 }
