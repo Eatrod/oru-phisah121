@@ -5,7 +5,7 @@
 #include <sstream>
 #include <vector>
 #include <fstream>
-
+#include <cmath>
 using namespace std;
 
 template<class T>
@@ -51,8 +51,8 @@ public:
 	friend interval<T> operator*(interval<T> &lop,interval<T> &rop)
 	{
 		interval<T> m;
-		m.upper = (lop.upper*rop.upper) * (lop.upper*rop.lower) * (lop.lower*rop.upper) * (lop.lower*rop.lower);
-		m.lower = (lop.upper*rop.upper) * (lop.upper*rop.lower) * (lop.lower*rop.upper) * (lop.lower*rop.lower);
+		m.upper = max( max( max(lop.upper*rop.upper, lop.upper*rop.lower) , lop.lower*rop.upper) , lop.lower*rop.lower);
+		m.lower = min( min( min(lop.upper*rop.upper, lop.upper*rop.lower) , lop.lower*rop.upper) , lop.lower*rop.lower);
 		return m;
 	}
 
