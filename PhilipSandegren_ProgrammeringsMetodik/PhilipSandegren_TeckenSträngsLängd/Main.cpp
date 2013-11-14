@@ -4,13 +4,9 @@ using namespace std;
 
 int RecStrLength(char str[])
 {
-	int i = 0;
 	if (str[0] == '\0')
 		return 0;
-	i += str[i];
-	++i;
-	RecStrLength(&str[i]);
-	return i;
+	return 1+RecStrLength(&str[1]);
 }
 
 
