@@ -315,7 +315,27 @@ class minmaxAI():
     #Evaluation function
     def evaluate(self, state):
         (ply1Score, ply2Score) = state.score()
-        allMoves = state.legalMoves()
+        
+        #Corner moves = very good!
+        if state.grid[0][0] == 1 or state.grid[0][7] == 1 or state.grid[7][0] == 1 or state.grid[7][7] == 1:
+            ply1Score += 10
+        elif state.grid[0][0] == 2 or state.grid[0][7] == 2 or state.grid[7][0] == 2 or state.grid[7][7] == 2:
+            ply2Score += 10
+
+        #Gives your opponent potenial acess to corner = bad!
+        if state.grid[1][1] == 1 or state.grid[6][6] == 1 or state.grid[1][6] == 1 or state.grid[6][1] == 1:
+            ply1Score -= 5
+        elif state.grid[1][1] == 2 or state.grid[6][6] == 2 or state.grid[1][6] == 2 or state.grid[6][1] == 2:
+            ply2Score -= 5
+
+        #Rewards 'mobility' = having a lot of moves available
+        moves = state.legalMoves()
+        for move in len(moves):
+            if state.ply == 1:
+                ply1score += 1
+            else:
+                ply2score += 1
+
         if state.ply == 1:
             return ply2Score - ply1Score
         else:
@@ -361,9 +381,9 @@ aiRA = ReversiRandomAI()
 # If any argument is None, then that player is a human.
 #f = ReversiFrame(None,aiRA)
 #f = ReversiFrame(None,minmaxAI())
-#f = ReversiFrame(minmaxAI(),GreedyAI())
+f = ReversiFrame(minmaxAI(),GreedyAI())
 #f = ReversiFrame(GreedyAI(),minmaxAI())
-f = ReversiFrame(minmaxAI(),aiRA)
+#f = ReversiFrame(minmaxAI(),aiRA)
 #f = ReversiFrame(minmaxAI(),minmaxAI())
 #f = ReversiFrame(minmaxAI(),aiRA)
 f.mainloop()
