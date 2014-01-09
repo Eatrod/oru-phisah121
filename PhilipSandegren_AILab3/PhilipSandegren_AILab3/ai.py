@@ -35,14 +35,29 @@ class AI():
 
         #myTree = DecisionFork("direction", "north": 
                        #DecisionFork("status",{
-                        #"dirt" : 
-                            #DecisionLeaf("Sow"), 
-                        #"wheat" : 
-                            #DecisionLeaf("Harvest"), 
-                        #"grass" : 
-                            #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")}
-                        #"Seed" :
-                            #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")}
+                        #"dirt" : #DecisionLeaf("Sow"), 
+                        #"wheat" : #DecisionLeaf("Harvest"), 
+                        #"grass" : #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")})
+                        #"Seed" : #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")})
+                       #,"west": 
+                       #DecisionFork("status",{
+                        #"dirt" : #DecisionLeaf("Sow"), 
+                        #"wheat" : #DecisionLeaf("Harvest"), 
+                        #"grass" : #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")})
+                        #"Seed" : #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")})
+                       #,"east": 
+                       #DecisionFork("status",{
+                        #"dirt" : #DecisionLeaf("Sow"), 
+                        #"wheat" : #DecisionLeaf("Harvest"), 
+                        #"grass" : #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")})
+                        #"Seed" : #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")})
+                       #,"south": 
+                       #DecisionFork("status",{
+                        #"dirt" : #DecisionLeaf("Sow"), 
+                        #"wheat" : #DecisionLeaf("Harvest"), 
+                        #"grass" : #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")})
+                        #"Seed" : #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")})
+
 
     # This function is called by the agent's update function. it gets the
     # sensor data in form of a percept dictionary (there is a new one generated
