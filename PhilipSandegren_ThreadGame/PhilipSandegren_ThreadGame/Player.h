@@ -7,6 +7,8 @@ class Player
 {
 private:
 	char knapp;
+	int x;
+	int y;
 public:
 	void gotoxy(int x, int y)
 	{
@@ -15,28 +17,30 @@ public:
 		coord.Y = y;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	}
-	void player1ButtonPress(char _getch, int x, int y)
+	void player1ButtonPress(char getch)
 	{
-		knapp = _getch;
-		if (knapp = 'w')
+		knapp = getch;
+		if (knapp == 'w')
 		{
+			gotoxy(x - 1, y);
 			cout << ' ';
 			gotoxy(x + 6, y);
+			x += 6;
 			cout << '1';
 		}
-		else if (knapp = 's')
+		else if (knapp == 's')
 		{
 			cout << ' ';
 			gotoxy(x - 6, y);
 			cout << '1';
 		}
-		else if (knapp = 'a')
+		else if (knapp == 'a')
 		{
 			cout << ' ';
 			gotoxy(x, y - 6);
 			cout << '1';
 		}
-		else if (knapp = 'd')
+		else if (knapp == 'd')
 		{
 			cout << ' ';
 			gotoxy(x, y + 6);
@@ -44,28 +48,28 @@ public:
 		}
 	}
 
-	void player2ButtonPress(char _getch, int x, int y)
+	void player2ButtonPress(char getch)
 	{
-		knapp = _getch;
-		if (knapp = 'w')
+		knapp = getch;
+		if (knapp = 'i')
 		{
 			cout << ' ';
 			gotoxy(x + 6, y);
 			cout << '2';
 		}
-		else if (knapp = 's')
+		else if (knapp = 'k')
 		{
 			cout << ' ';
 			gotoxy(x - 6, y);
 			cout << '2';
 		}
-		else if (knapp = 'a')
+		else if (knapp = 'j')
 		{
 			cout << ' ';
 			gotoxy(x, y - 6);
 			cout << '2';
 		}
-		else if (knapp = 'd')
+		else if (knapp = 'l')
 		{
 			cout << ' ';
 			gotoxy(x, y + 6);

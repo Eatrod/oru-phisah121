@@ -12,6 +12,8 @@ class Game
 {
 private:
 	thread player1(), player2();
+	Player p1, p2;
+	mutex mutex_cout;
 public:
 	void drawGameField()
 	{
@@ -39,9 +41,9 @@ public:
 	{
 	}
 	//Förflyttar aktuell spelare
-	void movePlayer()
+	void movePlayer(char getch)
 	{
-
+		p1.player1ButtonPress(getch);
 	}
 	Game(void)
 	{
