@@ -33,6 +33,16 @@ class AI():
         # if you want to test your hand-made decision tree, you may
         # generate and fill it here
 
+        #myTree = DecisionFork("direction", "north": 
+                       #DecisionFork("status",{
+                        #"dirt" : 
+                            #DecisionLeaf("Sow"), 
+                        #"wheat" : 
+                            #DecisionLeaf("Harvest"), 
+                        #"grass" : 
+                            #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")}
+                        #"Seed" :
+                            #DecisionFork("energy", {"low" : DecisionLeaf("Rest"), "Ok" : DecisionLeaf("Rest")}
 
     # This function is called by the agent's update function. it gets the
     # sensor data in form of a percept dictionary (there is a new one generated
