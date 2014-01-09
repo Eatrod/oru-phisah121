@@ -260,7 +260,7 @@ class GreedyAI():
 #Mini-Max AI
 class minmaxAI():
     def doMove(self, state):
-        bestMove = self.minmaxDecision(state,3)
+        bestMove = self.minmaxDecision(state,4)
         (x, y) = bestMove
         state.move(x, y)
 
@@ -317,24 +317,30 @@ class minmaxAI():
         (ply1Score, ply2Score) = state.score()
         
         #Corner moves = very good!
+        #Controlling the corner is vital in reversi because corner pieces can never be taken over
+        #Having the corner also often means you control then entire edge
         if state.grid[0][0] == 1 or state.grid[0][7] == 1 or state.grid[7][0] == 1 or state.grid[7][7] == 1:
             ply1Score += 10
         elif state.grid[0][0] == 2 or state.grid[0][7] == 2 or state.grid[7][0] == 2 or state.grid[7][7] == 2:
             ply2Score += 10
 
         #Gives your opponent potenial acess to corner = bad!
+        #This is called 'corner edge' the place that is one step towards the center from the corner
+        #Controlling this often means you lost your chance of getting the corner
         if state.grid[1][1] == 1 or state.grid[6][6] == 1 or state.grid[1][6] == 1 or state.grid[6][1] == 1:
             ply1Score -= 5
         elif state.grid[1][1] == 2 or state.grid[6][6] == 2 or state.grid[1][6] == 2 or state.grid[6][1] == 2:
             ply2Score -= 5
 
         #Rewards 'mobility' = having a lot of moves available
+        #The more moves you have the lesser chance is it that you're opponent will leave you with no moves at all
+        #Also it gives the minmax AI more search options so the best move can be found
         moves = state.legalMoves()
-        for move in len(moves):
+        for move in moves[0:]:
             if state.ply == 1:
-                ply1score += 1
+                ply1Score += 1
             else:
-                ply2score += 1
+                ply2Score += 1
 
         if state.ply == 1:
             return ply2Score - ply1Score
