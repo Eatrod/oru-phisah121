@@ -51,7 +51,7 @@ class DecisionLeaf:
 
 
 #theTree = DecisionFork("direction",
-#    {"north": DecisionFork("energy",
+#   {"north": DecisionFork("energy",
 #        {"ok": DecisionLeaf("GO"), "low": DecisionLeaf("EAT"), "high": DecisionLeaf("SLEEP")}),
 #        "south": DecisionFork("energy",
 #        {"ok": DecisionLeaf("GO"), "low": DecisionLeaf("EAT"), "high": DecisionLeaf("SLEEP")}),
