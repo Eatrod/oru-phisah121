@@ -5,6 +5,12 @@
 
 using namespace std;
 
+struct playerInfo {
+	int x;
+	int y;
+	int id;
+};
+
 class Player
 {
 private:
@@ -14,8 +20,6 @@ private:
 	playerInfo newPlayer;
 	deque<char> *key; 
 	deque<playerInfo> *pos;
-	Game g;
-	thread game1(g);
 
 public:
 	void gotoxy(int x, int y)
@@ -43,8 +47,9 @@ public:
 		{
 			char knapp = '0';
 			//Läs teckenkö för 
-			knapp = keyQueue1.front();
-			keyQueue1.pop_front();
+			knapp = key->front();
+			if (!key->empty())
+				key->pop_front();
 			if (knapp == 'w')
 			{
 				if (y > 1) 
@@ -52,8 +57,8 @@ public:
 					goClear(x,y);
 					y -= 3;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
-					playerQueue.push_back(newPlayer);
-					g();
+					pos->push_back(newPlayer);
+					
 				}
 			}
 			else if (knapp == 's')
@@ -63,8 +68,8 @@ public:
 					goClear(x,y);
 					y += 3;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
-					playerQueue.push_back(newPlayer);
-					g();
+					pos->push_back(newPlayer);
+					
 				}
 			}
 			else if (knapp == 'a')
@@ -74,8 +79,8 @@ public:
 					goClear(x,y);
 					x -= 6;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
-					playerQueue.push_back(newPlayer);
-					g();
+					pos->push_back(newPlayer);
+					
 				}
 			}
 			else if (knapp == 'd')
@@ -85,8 +90,8 @@ public:
 					goClear(x,y);
 					x += 6;
 				    newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
-					playerQueue.push_back(newPlayer);
-					g();
+					pos->push_back(newPlayer);
+					
 				}
 			}
 			//Spelare 2's knappar
@@ -97,8 +102,8 @@ public:
 					goClear(x,y);
 					y -= 3;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
-					playerQueue.push_back(newPlayer);
-					g();
+					pos->push_back(newPlayer);
+					
 				}
 			}
 			else if (knapp == 'k')
@@ -108,8 +113,8 @@ public:
 					goClear(x,y);
 					y += 3;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
-					playerQueue.push_back(newPlayer);
-					g();
+					pos->push_back(newPlayer);
+					
 				}
 			}
 			else if (knapp == 'j')
@@ -119,8 +124,8 @@ public:
 					goClear(x,y);
 					x -= 6;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
-					playerQueue.push_back(newPlayer);
-					g();
+					pos->push_back(newPlayer);
+					
 				}
 			}
 			else if (knapp == 'l')
@@ -130,8 +135,8 @@ public:
 					goClear(x,y);
 					x += 6;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
-					playerQueue.push_back(newPlayer);
-					g();
+					pos->push_back(newPlayer);
+					
 				}
 			}
 			this_thread::sleep_for(chrono::milliseconds(1000));
