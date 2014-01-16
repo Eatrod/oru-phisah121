@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Struct för att kunna skicka med spelaren x,y koordinat samt vilken spelare till game tråden via kön
 struct playerInfo {
 	int x;
 	int y;
@@ -22,6 +23,7 @@ private:
 	deque<char> *key; 
 	deque<playerInfo> *pos;
 public:
+	//Den berömda gotoxy för att flytta markören i konsoll fönster
 	void gotoxy(int x, int y)
 	{
 		COORD coord;
@@ -29,7 +31,7 @@ public:
 		coord.Y = y;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	}
-
+	//Tar bort spelarens gamla figur på gamla positionen
 	void goClear(int x, int y)
 	{
 		gotoxy(x,y);
@@ -40,11 +42,12 @@ public:
 	{
 		while ( true )
 		{
-			//Läs teckenkö för 
+			//Läser första tangeten i tangentkön
 			if (!key->empty())
 				knapp = key->front();
 			if (!key->empty())
 				key->pop_front();
+			//Spelare 1's knappar
 			if (knapp == 'w')
 			{
 				if (y > 1) 
@@ -152,7 +155,7 @@ public:
 		this->x = 3;
 		this->y = 1;
 	}
-	
+	//Konstruktor med pekare till alla köer
 	Player(deque<char> *k, deque<playerInfo> *p)
 	{
 		key=k;

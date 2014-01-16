@@ -20,6 +20,7 @@ private:
 	deque<playerInfo> *pos;
 	playerInfo thePlayer;
 public:
+	//Den berömda gotoxy för att flytta markören i konsoll fönster
 	void gotoxy(int x, int y)
 	{
 		COORD coord;
@@ -27,6 +28,7 @@ public:
 		coord.Y = y;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	}
+	//Ritar ut spelplanen
 	void drawGameField()
 	{
 		for (int a = 0; a<7; ++a)
@@ -49,7 +51,7 @@ public:
 		}
 	}
 
-	//Förflyttar aktuell spelare
+	//Ritar ut aktuell spelares position baserat på datat som ligger först i kön
 	void movePlayer(char getch)
 	{
 		mutex_queue.lock();
@@ -81,7 +83,7 @@ public:
 		mutex_queue.unlock();
 	}
 
-
+	//Main funktionen som kör igång programmet
 	void GameMain()
 	{
 		drawGameField();
@@ -103,18 +105,12 @@ public:
 		else
 			return false;
 	}
-	
-	void goClear(int x, int y)
-	{
-		gotoxy(x,y);
-		cout << ' ';
-	}
 
 	Game(void)
 	{
 
 	}
-	
+	//Konstruktor med pekare till alla köer
 	Game(deque<char> *k1, deque<char> *k2, deque<playerInfo> *p)
 	{
 		key1=k1;
