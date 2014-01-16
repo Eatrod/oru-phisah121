@@ -3,12 +3,6 @@
 
 using namespace std;
 
-struct playerInfo {
-	int x;
-	int y;
-	int id;
-};
-
 deque<char> keyQueue1;
 deque<char> keyQueue2;
 deque<playerInfo> playerQueue;

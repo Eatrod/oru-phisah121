@@ -13,7 +13,7 @@ class Game
 {
 private:
 	Player p1, p2;
-	mutex mutex_keyboard;
+	mutex mutex_queue;
 	char knapp;
 	deque<char> *key1;
 	deque<char> *key2;
@@ -52,39 +52,31 @@ public:
 	//Förflyttar aktuell spelare
 	void movePlayer(char getch)
 	{
-		if (whichPlayer(getch) == true)
-			keyQueue1.push_back(getch);
-		else
-			keyQueue2.push_back(getch);
-		mutex_keyboard.lock();
+		mutex_queue.lock();
 		if (whichPlayer(getch) == true)
 		{
-			p1();
+			key1->push_back(getch);
 		}
 		else
 		{
-			p2();
+			key2->push_back(getch);
 		}
-		mutex_keyboard.unlock();
-	}
-	void operator ()()
-	{
-		while ( true )
+		mutex_queue.unlock();
+
+		thePlayer = pos->front();
+		if (!pos->empty())
+			pos->pop_front();
+		gotoxy(thePlayer.x, thePlayer.y);
+		if (thePlayer.id == 1)
 		{
-			thePlayer = playerQueue.front();
-			playerQueue.pop_front();
-			gotoxy(thePlayer.x, thePlayer.y);
-			if (thePlayer.id == 1)
-			{
-				cout << '1';
-			}
-			else
-			{
-				cout << '2';
-			}
-			this_thread::sleep_for(chrono::milliseconds(1000));
+			cout << '1';
+		}
+		else
+		{
+			cout << '2';
 		}
 	}
+
 	void GameMain()
 	{
 		thread player1(p1), player2(p2);
@@ -95,12 +87,11 @@ public:
 		if (_kbhit())
 		{
 			knapp = _getch();
-			if (whichPlayer(knapp) == true)
-				movePlayer(knapp);
-			else
-				movePlayer(knapp);
+			movePlayer(knapp);
 		}
 	} while (true);
+		player1.join();
+		player2.join();
 	}
 	
 	//Avgör om spelare 1 eller 2 tryckte på tangetbordet
