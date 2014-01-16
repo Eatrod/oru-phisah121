@@ -33,19 +33,19 @@ public:
 		{
 			for (int i = 0; i < 67; ++i)
 			{
-				std::cout << "-";
+				cout << "-";
 			}
-			std::cout << "\n";
+			cout << "\n";
 			for (int i = 0; i < 12; ++i)
 			{
-				std::cout << "|     ";
+				cout << "|     ";
 			}
-			std::cout << "\n";
+			cout << "\n";
 			for (int i = 0; i < 67; ++i)
 			{
-				std::cout << "-";
+				cout << "-";
 			}
-			std::cout << "\n";
+			cout << "\n";
 		}
 	}
 
@@ -69,29 +69,24 @@ public:
 		gotoxy(thePlayer.x, thePlayer.y);
 		if (thePlayer.id == 1)
 		{
-			cout << '1';
+			std::cout << '1';
 		}
 		else
 		{
-			cout << '2';
+			std::cout << '2';
 		}
 	}
 
 	void GameMain()
 	{
-		thread player1(p1), player2(p2);
 		drawGameField();
-		player1.join();
-		player2.join();
 		do {
-		if (_kbhit())
-		{
-			knapp = _getch();
-			movePlayer(knapp);
-		}
-	} while (true);
-		player1.join();
-		player2.join();
+			if (_kbhit())
+			{
+				knapp = _getch();
+				movePlayer(knapp);
+			}
+		} while (true);
 	}
 	
 	//Avgör om spelare 1 eller 2 tryckte på tangetbordet
@@ -99,6 +94,8 @@ public:
 	{
 		if (knapp == 'w' || knapp == 'a' || knapp == 's' || knapp == 'd')
 			return true;
+		else
+			return false;
 	}
 	
 	void goClear(int x, int y)
