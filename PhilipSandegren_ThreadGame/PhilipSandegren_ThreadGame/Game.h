@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Windows.h>
 #include <conio.h>
 #include <iostream>
 #include <thread>
@@ -12,7 +13,6 @@ using namespace std;
 class Game
 {
 private:
-	Player p1, p2;
 	mutex mutex_queue;
 	char knapp;
 	deque<char> *key1;
@@ -62,10 +62,13 @@ public:
 			key2->push_back(getch);
 		}
 		mutex_queue.unlock();
-
-		thePlayer = pos->front();
+		
+		mutex_queue.lock();
 		if (!pos->empty())
+		{
+			thePlayer = pos->front();
 			pos->pop_front();
+		}
 		gotoxy(thePlayer.x, thePlayer.y);
 		if (thePlayer.id == 1)
 		{
@@ -75,11 +78,14 @@ public:
 		{
 			std::cout << '2';
 		}
+		mutex_queue.unlock();
 	}
+
 
 	void GameMain()
 	{
 		drawGameField();
+		gotoxy(3,1);
 		do {
 			if (_kbhit())
 			{
@@ -103,25 +109,7 @@ public:
 		gotoxy(x,y);
 		cout << ' ';
 	}
-	void goRight(int x, int y)
-	{
-		gotoxy(x+6, y);
-	}
-	//Flyttar spelaren åt vänster
-	void goLeft(int x, int y)
-	{
-		gotoxy(x-6, y);
-	}
-	//Flyttar spelaren uppåt
-	void goUp(int x, int y)
-	{
-		gotoxy(x, y-3);
-	}
-	//Flyttar spelaren neråt
-	void goDown(int x, int y)
-	{
-		gotoxy(x, y+3);
-	}
+
 	Game(void)
 	{
 
