@@ -1,7 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <thread>
-#include "Game.h"
+#include <mutex>
 
 using namespace std;
 
@@ -11,6 +11,7 @@ struct playerInfo {
 	int id;
 };
 
+mutex mutex_queue;
 class Player
 {
 private:
@@ -20,7 +21,6 @@ private:
 	playerInfo newPlayer;
 	deque<char> *key; 
 	deque<playerInfo> *pos;
-
 public:
 	void gotoxy(int x, int y)
 	{
@@ -36,18 +36,13 @@ public:
 		cout << ' ';
 	}
 
-	void player1ButtonPress(char getch)
-	{
-
-	}
-
 	void operator()() //DETTA ÄR FUNKTIONEN SOM EXEKVERAS I EN TRÅD
 	{
 		while ( true )
 		{
-			char knapp = '0';
 			//Läs teckenkö för 
-			knapp = key->front();
+			if (!key->empty())
+				knapp = key->front();
 			if (!key->empty())
 				key->pop_front();
 			if (knapp == 'w')
@@ -57,7 +52,9 @@ public:
 					goClear(x,y);
 					y -= 3;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
+					mutex_queue.lock();
 					pos->push_back(newPlayer);
+					mutex_queue.unlock();
 					
 				}
 			}
@@ -68,8 +65,9 @@ public:
 					goClear(x,y);
 					y += 3;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
+					mutex_queue.lock();
 					pos->push_back(newPlayer);
-					
+					mutex_queue.unlock();
 				}
 			}
 			else if (knapp == 'a')
@@ -79,8 +77,9 @@ public:
 					goClear(x,y);
 					x -= 6;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
+					mutex_queue.lock();
 					pos->push_back(newPlayer);
-					
+					mutex_queue.unlock();
 				}
 			}
 			else if (knapp == 'd')
@@ -90,8 +89,9 @@ public:
 					goClear(x,y);
 					x += 6;
 				    newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
+					mutex_queue.lock();
 					pos->push_back(newPlayer);
-					
+					mutex_queue.unlock();
 				}
 			}
 			//Spelare 2's knappar
@@ -102,8 +102,9 @@ public:
 					goClear(x,y);
 					y -= 3;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
+					mutex_queue.lock();
 					pos->push_back(newPlayer);
-					
+					mutex_queue.unlock();
 				}
 			}
 			else if (knapp == 'k')
@@ -113,8 +114,9 @@ public:
 					goClear(x,y);
 					y += 3;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
+					mutex_queue.lock();
 					pos->push_back(newPlayer);
-					
+					mutex_queue.unlock();
 				}
 			}
 			else if (knapp == 'j')
@@ -124,8 +126,9 @@ public:
 					goClear(x,y);
 					x -= 6;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
+					mutex_queue.lock();
 					pos->push_back(newPlayer);
-					
+					mutex_queue.unlock();
 				}
 			}
 			else if (knapp == 'l')
@@ -135,21 +138,19 @@ public:
 					goClear(x,y);
 					x += 6;
 					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
+					mutex_queue.lock();
 					pos->push_back(newPlayer);
-					
+					mutex_queue.unlock();
 				}
 			}
 			this_thread::sleep_for(chrono::milliseconds(1000));
 		}
 	}
-
-	int getX() {return this->x;}
-	int getY() {return this->y;}
 	
 	Player(void)
 	{
-		x = 3;
-		y = 1;
+		this->x = 3;
+		this->y = 1;
 	}
 	
 	Player(deque<char> *k, deque<playerInfo> *p)
