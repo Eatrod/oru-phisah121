@@ -1,5 +1,7 @@
 #pragma once
 #include <Windows.h>
+#include <thread>
+#include "Game.h"
 
 using namespace std;
 
@@ -9,7 +11,12 @@ private:
 	char knapp;
 	int x;
 	int y;
-	deque<int> pos;
+	playerInfo newPlayer;
+	deque<char> *key; 
+	deque<playerInfo> *pos;
+	Game g;
+	thread game1(g);
+
 public:
 	void gotoxy(int x, int y)
 	{
@@ -18,128 +25,134 @@ public:
 		coord.Y = y;
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	}
-	
+
 	void goClear(int x, int y)
 	{
 		gotoxy(x,y);
 		cout << ' ';
 	}
-	void goRight(int x, int y)
-	{
-		gotoxy(x+6, y);
-	}
-	//Flyttar spelaren åt vänster
-	void goLeft(int x, int y)
-	{
-		gotoxy(x-6, y);
-	}
-	//Flyttar spelaren uppåt
-	void goUp(int x, int y)
-	{
-		gotoxy(x, y-3);
-	}
-	//Flyttar spelaren neråt
-	void goDown(int x, int y)
-	{
-		gotoxy(x, y+3);
-	}
+
 	void player1ButtonPress(char getch)
 	{
-		knapp = getch;
-		if (knapp == 'w')
-		{
-			if (y > 1) 
-			{
-				goClear(x,y);
-				goUp(x,y);
-				y -= 3;
-				cout << '1';
-			}
-		}
-		else if (knapp == 's')
-		{
-			if (y < 19)
-			{
-				goClear(x,y);
-				goDown(x,y);
-				y += 3;
-				cout << '1';
-			}
-		}
-		else if (knapp == 'a')
-		{
-			if (x > 3)
-			{
-				goClear(x,y);
-				goLeft(x,y);
-				x -= 6;
-				cout << '1';
-			}
-		}
-		else if (knapp == 'd')
-		{
-			if (x < 60) 
-			{
-				goClear(x,y);
-				goRight(x,y);
-				x += 6;
-				cout << '1';
-			}
-		}
+
 	}
 
-	void player2ButtonPress(char getch)
+	void operator()() //DETTA ÄR FUNKTIONEN SOM EXEKVERAS I EN TRÅD
 	{
-		knapp = getch;
-		if (knapp == 'i')
+		while ( true )
 		{
-			if (y > 1) 
+			char knapp = '0';
+			//Läs teckenkö för 
+			knapp = keyQueue1.front();
+			keyQueue1.pop_front();
+			if (knapp == 'w')
 			{
-				goClear(x,y);
-				goUp(x,y);
-				y -= 3;
-				cout << '2';
+				if (y > 1) 
+				{
+					goClear(x,y);
+					y -= 3;
+					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
+					playerQueue.push_back(newPlayer);
+					g();
+				}
 			}
-		}
-		else if (knapp == 'k')
-		{
-			if (y < 19)
+			else if (knapp == 's')
 			{
-				goClear(x,y);
-				goDown(x,y);
-				y += 3;
-				cout << '2';
+				if (y < 19)
+				{
+					goClear(x,y);
+					y += 3;
+					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
+					playerQueue.push_back(newPlayer);
+					g();
+				}
 			}
-		}
-		else if (knapp == 'j')
-		{
-			if (x > 3)
+			else if (knapp == 'a')
 			{
-				goClear(x,y);
-				goLeft(x,y);
-				x -= 6;
-				cout << '2';
+				if (x > 3)
+				{
+					goClear(x,y);
+					x -= 6;
+					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
+					playerQueue.push_back(newPlayer);
+					g();
+				}
 			}
-		}
-		else if (knapp == 'l')
-		{
-			if (x < 60) 
+			else if (knapp == 'd')
 			{
-				goClear(x,y);
-				goRight(x,y);
-				x += 6;
-				cout << '2';
+				if (x < 60) 
+				{
+					goClear(x,y);
+					x += 6;
+				    newPlayer.x = x; newPlayer.y = y; newPlayer.id = 1;
+					playerQueue.push_back(newPlayer);
+					g();
+				}
 			}
+			//Spelare 2's knappar
+			if (knapp == 'i')
+			{
+				if (y > 1) 
+				{
+					goClear(x,y);
+					y -= 3;
+					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
+					playerQueue.push_back(newPlayer);
+					g();
+				}
+			}
+			else if (knapp == 'k')
+			{
+				if (y < 19)
+				{
+					goClear(x,y);
+					y += 3;
+					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
+					playerQueue.push_back(newPlayer);
+					g();
+				}
+			}
+			else if (knapp == 'j')
+			{
+				if (x > 3)
+				{
+					goClear(x,y);
+					x -= 6;
+					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
+					playerQueue.push_back(newPlayer);
+					g();
+				}
+			}
+			else if (knapp == 'l')
+			{
+				if (x < 60) 
+				{
+					goClear(x,y);
+					x += 6;
+					newPlayer.x = x; newPlayer.y = y; newPlayer.id = 2;
+					playerQueue.push_back(newPlayer);
+					g();
+				}
+			}
+			this_thread::sleep_for(chrono::milliseconds(1000));
 		}
-
 	}
+
 	int getX() {return this->x;}
 	int getY() {return this->y;}
+	
 	Player(void)
 	{
 		x = 3;
 		y = 1;
 	}
+	
+	Player(deque<char> *k, deque<playerInfo> *p)
+	{
+		key=k;
+		pos=p;
+	}
+
 
 	~Player(void)
 	{
