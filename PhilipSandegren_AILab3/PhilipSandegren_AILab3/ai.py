@@ -240,7 +240,7 @@ class AI():
         return var
 
 
-    def noneCheck(self, examples, attributes):
+    def noneCheck(self, values, attributes):
         if (len(attributes) == 0):
             walkEast = 0
             walkWest = 0
@@ -249,20 +249,20 @@ class AI():
             DoHarvest = 0
             DoRest = 0
             DoSow = 0
-            for example in examples:
-                if example[0] == 0:
+            for value in values:
+                if value[0] == 0:
                     walkEast += 1
-                if example[0] == 1:
+                if value[0] == 1:
                     walkWest += 1
-                if example[0] == 2:
+                if value[0] == 2:
                     walkNorth += 1
-                if example[0] == 3:
+                if value[0] == 3:
                     walkSouth += 1
-                if example[0] == 4:
+                if value[0] == 4:
                     DoHarvest += 1
-                if example[0] == 5:
+                if value[0] == 5:
                     DoRest += 1
-                if example[0] == 6:
+                if value[0] == 6:
                     DoSow += 1
             #List =[walkEast,walkWest,walkNorth,walkSouth,DoHarvest,DoRest,DoSow]
             List ={0:walkEast, 1:walkWest, 2:walkNorth, 3:walkSouth, 4:DoHarvest, 5:DoRest, 6:DoSow}
