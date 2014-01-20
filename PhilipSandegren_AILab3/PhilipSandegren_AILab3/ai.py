@@ -196,14 +196,14 @@ class AI():
                  tree.add(vi, self.ID3(examples_vi,delAttribute(attributes,A)))
         return tree
         
-    def getSubTable(self, A, vi, examples, attributes):
+    def getSubTable(self,vi,X,values,attributes):
         subtable = []
-        for example in examples:
-            if(example[self.attributes[A]] == vi):
-                subtable.append(example)
+        for value in values:
+            if(value[self.attributes[X]] == vi):
+                subtable.append(value)
         return subtable
 
-    def duplicateCheck(self, values):
+    def duplicateCheck(self,values):
         issame = True
         old = values[0][0]
         for value in values:
@@ -240,7 +240,7 @@ class AI():
         return var
 
 
-    def noneCheck(self, values, attributes):
+    def noneCheck(self,values,attributes):
         if (len(attributes) == 0):
             walkEast = 0
             walkWest = 0
