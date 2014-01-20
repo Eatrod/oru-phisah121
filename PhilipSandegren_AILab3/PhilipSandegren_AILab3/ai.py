@@ -183,23 +183,23 @@ class AI():
         if(empty):
             print("DecisionLeaf", action)
             return DecisionLeaf(action) 
-        Values, A = self.calculate(values, attributes)
-        print("DecisionFork: ", A)
-        tree = DecisionFork(A,{})
-        for vi in Values[A]:
-             print("Value: ",vi," Attribute: ",A)
-             examples_vi = self.getSubTable(A, vi, values, attributes)
+        Values, X = self.calculate(values, attributes)
+        print("DecisionFork: ", X)
+        tree = DecisionFork(X,{})
+        for vi in Values[X]:
+             print("Value: ",vi," Attribute: ",X)
+             examples_vi = self.getSubTable(vi, X, values, attributes)
              if(len(examples_vi) == 0):
                  tree.add(vi, DecisionLeaf(self.mostCommon(values)))
                  print("DecisionLeaf")
              else:
-                 tree.add(vi, self.ID3(examples_vi,delAttribute(attributes,A)))
+                 tree.add(vi, self.ID3(examples_vi,delAttribute(attributes,X)))
         return tree
         
-    def getSubTable(self,vi,X,values,attributes):
+    def getSubTable(self,valueIndex,X,values,attributes):
         subtable = []
         for value in values:
-            if(value[self.attributes[X]] == vi):
+            if(value[self.attributes[X]] == valueIndex):
                 subtable.append(value)
         return subtable
 
