@@ -1,3 +1,7 @@
+#Philip Sandegren
+#AI-Lab 3
+#Python 3.3
+
 from decisionTree import *
 import random
 from math import log2
@@ -22,20 +26,15 @@ class AI():
     WalkEast, WalkWest, WalkNorth, WalkSouth, DoHarvest, DoRest, DoSow = range(0, 7)
 
     def __init__(self):
-        self.manualControl = True
+        self.manualControl = False
         # if you want your agent to execute the action that you
         # return, then you have to say False here. Otherwise, anything
         # you return will be overwritten by the manual input of the human.
-        self.storedActions = [{}]
+        self.storedActions = []
         self.attributes = {'onMyPosition':1,'onCellNorth':2,'onCellEast':3,
                'onCellSouth':4,'onCellWest':5,'myEnergy':6}
-
-        # this is just a dummy variable to show to you that the AI can
-        # use an internal data structue, e.g. containing a decision tree
-        # a knowledge base out of rules, etc.
-        # if you want to test your hand-made decision tree, you may
-        # generate and fill it here
-
+        self.storedActions = self.readFile('myTree.txt')
+        self.ID3Tree = self.ID3(self.storedActions,self.attributes)
         self.myTree = DecisionFork("onMyPosition",
                         {PerceptValue.Seed: DecisionLeaf(AI.DoRest),
                         PerceptValue.Dirt: DecisionLeaf(AI.DoSow),
@@ -98,60 +97,23 @@ class AI():
             return nodeType
         elif(isinstance(nodeType,DecisionFork)):
             return self.parseDecisionTree(nodeType.get(percept),percept)
-
-    
+   
     def reason(self, percept):
-        # This is a simple if construct that should serve as an _example_ only
-        # to show what you get and how you return actions. This you need to fill with 
-        # a function that parses a decision tree! 
-        # here you see how to use the speaking class attributes of the PerceptValue Class.
-        #if True == PerceptValue.Low:
-        #    return AI.DoRest
-        #if percept["onMyPosition"] == PerceptValue.Wheat:
-        #    return AI.DoHarvest
-        #elif percept["onMyPosition"] == PerceptValue.Dirt:
-        #    return AI.DoSow
-        #else:
-        #    rDraw = random.randrange(0, 5)
-        #    if rDraw == 0:
-        #        return AI.WalkEast
-        #    elif rDraw == 1:
-        #        return AI.WalkNorth
-        #    elif rDraw == 2:
-        #        return AI.WalkWest
-        #    elif rDraw == 3:
-        #        return AI.WalkSouth
-        #    else:   
-        #        return AI.DoRest
-        #return None
-        theResult = self.parseDecisionTree(self.myTree.get(percept),percept)
+        theResult = self.parseDecisionTree(self.ID3Tree.get(percept),percept)
         return theResult.result
-    
-    def ID3(self, examples, attributes):
-        same, action = self.CheckForSame(examples)
-        if(same):
-            print("DecisionLeaf", action)
-            return DecisionLeaf(action)
-        empty, action = self.CheckForEmpty(examples,attributes)  
-        if(empty):
-            print("DecisionLeaf", action)
-            return DecisionLeaf(action) 
 
-        Values, A = self.Calculate(examples, attributes)
-        print("DecisionFork: ", A)
-        Tree = DecisionFork(A,{})
-        for vi in Values[A]:
-             print("Value: ",vi," Attribute: ",A)
-             examples_vi = self.GetSubTable(A, vi, examples, attributes)
-             if(len(examples_vi) ==0 ):
-                 Tree.add(vi, DecisionLeaf(self.MostCommon(examples)))
-                 print("DecisionLeaf")
-             else:
-                 Tree.add(vi, self.ID3(examples_vi,self.RemoveAttribute(attributes,A)))
-        return Tree
-
-    def Calculate(self,exampels,attributes):
-        Table = []
+    def readFile(self,filename):
+        table = []
+        f = open(filename)
+        for line in f.readlines():
+            row = []
+            commalist = line[:-2]
+            list = commalist.split(',')
+            for element in list:
+                row.append(int(element))
+            table += [row]          
+        f.close()
+        return table
 
     #Converts the number of the action to actions name
     def actionNumberConvert(self,actionNumber):
@@ -169,9 +131,24 @@ class AI():
     # task b. Currently it contains a stub that simply prints everything to 
     # demonstrate that it is automatically called.
     def notify(self, tick, percept, action):
-        print(tick, ": this is the percept: ", percept, "and this is what the human did:", self.toString(action))
-        self.storedActions.append([self.actionNumberConvert(action),(percept)])
-        print(self.storedActions)
+        f = open('myTree.txt', 'a')
+        #print(tick,  ": ",
+            #percept.typeOn, ", ",
+            #percept.typeNorth, ", ",
+            #percept.typeEast, ", ",
+            #percept.typeSouth, ", ",
+            #percept.typeWest, ", ",
+            #percept.energyLevel, ": ",
+            #self.toString(action))
+        row = [action,percept['onMyPosition'],percept['onCellNorth'],percept['onCellEast'],
+               percept['onCellSouth'],percept['onCellWest'],percept['myEnergy']]
+        for value in row:
+            f.write('%d,'%value)
+        f.write('\n')
+        self.storedActions += [row]
+        print(percept)
+        f.close()
+
 
     def toString(self, action):
         if action == AI.WalkEast:
@@ -188,3 +165,210 @@ class AI():
             return "harvest"
         elif action == AI.DoSow:
             return "sow"
+
+########################################################################
+################# ID3 Section  #########################################
+########################################################################
+    def ID3(self, values, attributes):          
+        def delAttribute(attributes, A):
+            copy = attributes.copy()
+            if A in copy:
+             del copy[A]
+            return copy
+        same, action = self.duplicateCheck(values)
+        if(same):
+            print("DecisionLeaf", action)
+            return DecisionLeaf(action)
+        empty, action = self.noneCheck(values,attributes)  
+        if(empty):
+            print("DecisionLeaf", action)
+            return DecisionLeaf(action) 
+        Values, A = self.calculate(values, attributes)
+        print("DecisionFork: ", A)
+        tree = DecisionFork(A,{})
+        for vi in Values[A]:
+             print("Value: ",vi," Attribute: ",A)
+             examples_vi = self.getSubTable(A, vi, values, attributes)
+             if(len(examples_vi) == 0):
+                 tree.add(vi, DecisionLeaf(self.mostCommon(values)))
+                 print("DecisionLeaf")
+             else:
+                 tree.add(vi, self.ID3(examples_vi,delAttribute(attributes,A)))
+        return tree
+        
+    def getSubTable(self, A, vi, examples, attributes):
+        subtable = []
+        for example in examples:
+            if(example[self.attributes[A]] == vi):
+                subtable.append(example)
+        return subtable
+
+    def duplicateCheck(self, values):
+        issame = True
+        old = values[0][0]
+        for value in values:
+            new = value[0]
+            if(new != old):
+                issame = False
+                old = new
+        if(issame):
+            return True,old
+        else:
+            return False,old
+
+    def mostCommon(self,values):
+        walkEast = walkWest = walkNorth = walkSouth = DoHarvest = DoRest = DoSow = 0
+        for value in values:
+            if value[0] == 0:
+                walkEast += 1
+            if value[0] == 1:
+                walkWest += 1
+            if value[0] == 2:
+                walkNorth += 1
+            if value[0] == 3:
+                walkSouth += 1
+            if value[0] == 4:
+                DoHarvest += 1
+            if value[0] == 5:
+                DoRest += 1
+            if value[0] == 6:
+                DoSow += 1
+        #List =[walkEast,walkWest,walkNorth,walkSouth,DoHarvest,DoRest,DoSow]
+        #return max(List)
+        List ={0 : walkEast, 1 : walkWest, 2 : walkNorth, 3 : walkSouth, 4 : DoHarvest, 5: DoRest, 6 : DoSow}
+        var = max(List,key = lambda x: List[x])            
+        return var
+
+
+    def noneCheck(self, examples, attributes):
+        if (len(attributes) == 0):
+            walkEast = 0
+            walkWest = 0
+            walkNorth = 0
+            walkSouth = 0
+            DoHarvest = 0
+            DoRest = 0
+            DoSow = 0
+            for example in examples:
+                if example[0] == 0:
+                    walkEast += 1
+                if example[0] == 1:
+                    walkWest += 1
+                if example[0] == 2:
+                    walkNorth += 1
+                if example[0] == 3:
+                    walkSouth += 1
+                if example[0] == 4:
+                    DoHarvest += 1
+                if example[0] == 5:
+                    DoRest += 1
+                if example[0] == 6:
+                    DoSow += 1
+            #List =[walkEast,walkWest,walkNorth,walkSouth,DoHarvest,DoRest,DoSow]
+            List ={0:walkEast, 1:walkWest, 2:walkNorth, 3:walkSouth, 4:DoHarvest, 5:DoRest, 6:DoSow}
+            var = max(List,key = lambda x: List[x])            
+            #return var
+            return True, var
+        else:
+            return False, 0
+
+    #This is the calculation for ID3
+    def calculate(self,values,attributes):
+        HS = self.actionIG(values)
+        HSDict = {}
+        subTableGrass = []
+        subTableDirt = []
+        subTableSeed = []
+        subTableWheat = []
+        subTableOk = []
+        subTableLow = []
+        subTableHigh = []
+        for attribute in attributes:          
+            if(attribute == 'myEnergy'):
+                for value in values:
+                    if(value[attributes[attribute]] == PerceptValue.High):
+                        subTableHigh += [value]
+                    elif(value[attributes[attribute]] == PerceptValue.Ok):
+                        subTableOk += [value]
+                    elif(value[attributes[attribute]] == PerceptValue.Low):
+                        subTableLow += [value]
+                TotalRows = len(values)
+                HighIG = self.actionIG(subTableHigh)
+                OkIG = self.actionIG(subTableOk)
+                LowIG = self.actionIG(subTableLow);
+                HSDict[attribute] = HS - (len(subTableHigh)/TotalRows*HighIG +
+                                 len(subTableOk)/TotalRows*OkIG +
+                                 len(subTableLow)/TotalRows*LowIG)
+            else:
+                for value in values:
+                    if(value[attributes[attribute]] == PerceptValue.Grass):
+                        subTableGrass += [value]
+                    elif(value[attributes[attribute]] == PerceptValue.Dirt):
+                        subTableDirt += [value]
+                    elif(value[attributes[attribute]] == PerceptValue.Seed):
+                        subTableSeed += [value]
+                    elif(value[attributes[attribute]] == PerceptValue.Wheat):
+                        subTableWheat += [value]
+                TotalRows = len(values)
+                GrassIG = self.actionIG(subTableGrass)
+                DirtIG = self.actionIG(subTableDirt)
+                SeedIG = self.actionIG(subTableSeed)
+                WheatIG = self.actionIG(subTableWheat)
+                HSDict[attribute] = HS - (len(subTableGrass)/TotalRows*GrassIG +
+                                 len(subTableDirt)/TotalRows*DirtIG +
+                                 len(subTableSeed)/TotalRows*SeedIG +
+                                 len(subTableWheat)/TotalRows*WheatIG)
+            subTableGrass.clear()
+            subTableDirt.clear()
+            subTableSeed.clear()
+            subTableWheat.clear()
+            subTableHigh.clear()
+            subTableOk.clear()
+            subTableLow.clear()
+        var = max(attributes,key = lambda x: HSDict[x])
+        dictValues = {}
+        if(var == 'myEnergy'):
+            List = [0,1,2]
+        else:
+            List = [0,1,2,3]
+        dictValues[var] = List
+        return dictValues, var
+     
+    #IG calculates how many times an action occurs
+    def actionIG(self,values):
+        def IGHelper(action, nrOfRows):
+            if(action == 0 or nrOfRows == 0):
+                return 0
+            else:
+                return ((action/nrOfRows) * log2(action/nrOfRows))
+        numberOfRows = len(values)
+        WalkEast = 0
+        WalkWest = 0
+        WalkNorth = 0
+        WalkSouth = 0
+        DoHarvest = 0
+        DoRest = 0
+        DoSow = 0
+        for value in values:
+            if(values[0] == 0):
+                WalkEast += 1
+            elif(values[0] == 1):
+                WalkWest += 1
+            elif(values[0] == 2):
+                WalkNorth += 1
+            elif(values[0] == 3):
+                WalkSouth += 1
+            elif(values[0] == 4):
+                DoHarvest += 1
+            elif(values[0] == 5):
+                DoRest += 1
+            else:
+                DoSow += 1
+        IG = (-IGHelper(WalkEast,numberOfRows)
+              -IGHelper(WalkWest,numberOfRows)
+              -IGHelper(WalkNorth,numberOfRows)
+              -IGHelper(WalkSouth,numberOfRows)
+              -IGHelper(DoHarvest,numberOfRows)
+              -IGHelper(DoRest,numberOfRows)
+              -IGHelper(DoSow,numberOfRows))
+        return IG
