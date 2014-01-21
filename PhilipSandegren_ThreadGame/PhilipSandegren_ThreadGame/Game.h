@@ -54,33 +54,22 @@ public:
 	//Ritar ut aktuell spelares position baserat på datat som ligger först i kön
 	void movePlayer(char getch)
 	{
-		mutex_queue.lock();
-		if (whichPlayer(getch) == true)
-		{
-			key1->push_back(getch);
-		}
-		else
-		{
-			key2->push_back(getch);
-		}
-		mutex_queue.unlock();
-		
-		mutex_queue.lock();
 		if (!pos->empty())
 		{
+			mutex_queue.lock();
 			thePlayer = pos->front();
 			pos->pop_front();
+			mutex_queue.unlock();
+			gotoxy(thePlayer.x, thePlayer.y);
+			if (thePlayer.id == 1)
+			{
+				std::cout << '1';
+			}
+			else if (thePlayer.id == 2)
+			{
+				std::cout << '2';
+			}
 		}
-		gotoxy(thePlayer.x, thePlayer.y);
-		if (thePlayer.id == 1)
-		{
-			std::cout << '1';
-		}
-		else
-		{
-			std::cout << '2';
-		}
-		mutex_queue.unlock();
 	}
 
 	//Main funktionen som kör igång programmet
@@ -88,10 +77,23 @@ public:
 	{
 		drawGameField();
 		gotoxy(3,1);
+		cout << '1';
 		do {
 			if (_kbhit())
 			{
 				knapp = _getch();
+				if (whichPlayer(knapp) == true)
+				{
+					mutex_queue.lock();
+					key1->push_back(knapp);
+					mutex_queue.unlock();
+				}
+				else if (whichPlayer(knapp) == false)
+				{
+					mutex_queue.lock();
+					key2->push_back(knapp);
+					mutex_queue.unlock();
+				}
 				movePlayer(knapp);
 			}
 		} while (true);

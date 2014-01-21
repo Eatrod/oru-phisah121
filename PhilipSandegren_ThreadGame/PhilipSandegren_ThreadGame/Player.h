@@ -17,8 +17,8 @@ class Player
 {
 private:
 	char knapp;
-	int x;
 	int y;
+	int x;
 	playerInfo newPlayer;
 	deque<char> *key; 
 	deque<playerInfo> *pos;
@@ -58,6 +58,7 @@ public:
 					mutex_queue.lock();
 					pos->push_back(newPlayer);
 					mutex_queue.unlock();
+					knapp = ' ';
 					
 				}
 			}
@@ -71,6 +72,7 @@ public:
 					mutex_queue.lock();
 					pos->push_back(newPlayer);
 					mutex_queue.unlock();
+					knapp = ' ';
 				}
 			}
 			else if (knapp == 'a')
@@ -83,6 +85,7 @@ public:
 					mutex_queue.lock();
 					pos->push_back(newPlayer);
 					mutex_queue.unlock();
+					knapp = ' ';
 				}
 			}
 			else if (knapp == 'd')
@@ -95,6 +98,7 @@ public:
 					mutex_queue.lock();
 					pos->push_back(newPlayer);
 					mutex_queue.unlock();
+					knapp = ' ';
 				}
 			}
 			//Spelare 2's knappar
@@ -108,6 +112,7 @@ public:
 					mutex_queue.lock();
 					pos->push_back(newPlayer);
 					mutex_queue.unlock();
+					knapp = ' ';
 				}
 			}
 			else if (knapp == 'k')
@@ -120,6 +125,7 @@ public:
 					mutex_queue.lock();
 					pos->push_back(newPlayer);
 					mutex_queue.unlock();
+					knapp = ' ';
 				}
 			}
 			else if (knapp == 'j')
@@ -132,6 +138,7 @@ public:
 					mutex_queue.lock();
 					pos->push_back(newPlayer);
 					mutex_queue.unlock();
+					knapp = ' ';
 				}
 			}
 			else if (knapp == 'l')
@@ -144,20 +151,21 @@ public:
 					mutex_queue.lock();
 					pos->push_back(newPlayer);
 					mutex_queue.unlock();
+					knapp = ' ';
 				}
 			}
-			this_thread::sleep_for(chrono::milliseconds(1000));
+			this_thread::sleep_for(chrono::milliseconds(500));
 		}
 	}
-	
-	Player(void)
-	{
-		this->x = 3;
-		this->y = 1;
-	}
+
 	//Konstruktor med pekare till alla köer
 	Player(deque<char> *k, deque<playerInfo> *p)
 	{
+		this->x = 3;
+		this->y = 1;
+		newPlayer.x = this->x;
+		newPlayer.y = this->y;
+		newPlayer.id = 0;
 		key=k;
 		pos=p;
 	}
