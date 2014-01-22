@@ -71,7 +71,7 @@ class AI():
                             PerceptValue.Seed : DecisionFork("myEnergy", {PerceptValue.Low : DecisionLeaf(AI.DoRest), PerceptValue.Ok : DecisionLeaf(self.randomActionPick())})
                        })})
        
-
+    #Picks a random walk action or rest
     def randomActionPick(self):
         rDraw = random.randrange(0, 5)
         if rDraw == 0:
